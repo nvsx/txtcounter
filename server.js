@@ -78,7 +78,7 @@ app.use('/', (req, res) => {
           <script>
             addEventListener('load', (event) => {
               let txtcounter = document.getElementById("txtcounter");
-              var xhr = new XMLHttpRequest();
+              let xhr = new XMLHttpRequest();
               xhr.open( "GET", "/txtcounter", true );
               xhr.onload = function (e) {
                 if (xhr.readyState === 4) {
