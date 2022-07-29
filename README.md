@@ -1,5 +1,9 @@
 # txtcounter
 
+## first steps
+- npm install
+- npm run dev
+
 ## new git repo
 ```
 # git config --global init.defaultBrach main 
