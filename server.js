@@ -50,7 +50,7 @@ else {
 // --------------
 // app
 const app = express()
-app.use('/', (req, res) => {
+app.use('/txtcounter', (req, res) => {
     let my_counter = parseInt(current_counter)
     my_counter++
     current_counter = my_counter.toString()
@@ -62,6 +62,39 @@ app.use('/', (req, res) => {
       })
     console.log(current_counter)
     res.send(current_counter)
+})
+app.use('/', (req, res) => {
+    res.send(`<!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>txtcounter test</title>
+      </head>
+      <body>
+          <p>txtcounter test</p>
+          <div id="txtcounter"></div>
+          <script>
+            addEventListener('load', (event) => {
+              let txtcounter = document.getElementById("txtcounter");
+              var xhr = new XMLHttpRequest();
+              xhr.open( "GET", "/txtcounter", true );
+              xhr.onload = function (e) {
+                if (xhr.readyState === 4) {
+                  if (xhr.status === 200) {
+                    txtcounter.innerHTML = xhr.responseText;
+                  } else {
+                    console.error(xhr.statusText);
+                  }
+                }
+              };
+              xhr.send( null );
+            });
+          </script>
+      </body>
+      </html>
+    `)
 })
 
 // --------------
