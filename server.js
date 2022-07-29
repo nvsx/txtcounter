@@ -40,7 +40,7 @@ else {
   console.log("starting up: counter file does not exist, trying to create")
   current_counter = "0"
   fs.writeFileSync(counterfile, current_counter, err => {
-    console.log("        writing to file", output_file)
+    // console.log("        writing to file", counterfile)
     if (err) {
       console.error(err)
     }
